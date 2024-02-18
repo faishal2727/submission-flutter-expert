@@ -1,0 +1,18 @@
+// ignore_for_file: prefer_const_constructors_in_immutables
+
+part of 'search_movie_bloc.dart';
+
+abstract class SearchMovieEvent extends Equatable {
+  const SearchMovieEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class OnQueryChanged extends SearchMovieEvent {
+  final String query;
+  OnQueryChanged(this.query);
+
+  @override
+  List<Object> get props => [query];
+}
