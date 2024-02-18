@@ -31,37 +31,28 @@ class _TopRatedTvSeriesPageState extends State<TopRatedTvSeriesPage> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<TopRatedTvSeriesBloc, TopRatedTvSeriesState>(
-          key: const Key('top rated tvseries'),
-          builder: (context, state) {
+          builder: (_, state) {
             if (state is TopRatedTvSeriesLoading) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
             } else if (state is TopRatedTvSeriesHasData) {
-              final result = state.result;
-              return Expanded(
-                child: ListView.builder(
-                  padding: const EdgeInsets.all(8),
-                  itemBuilder: (context, index) {
-                    final tvSeries = result[index];
-                    return TvSeriesCard(tvSeries);
-                  },
-                  itemCount: result.length,
-                ),
+              return ListView.builder(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                itemBuilder: (_, index) {
+                  final tvSeries = state.result[index];
+                  return TvSeriesCard(tvSeries);
+                },
+                itemCount: state.result.length,
               );
             } else if (state is TopRatedTvSeriesError) {
               return Center(
                 key: const Key('error_message'),
                 child: Text(state.message),
               );
-            } else if (state is TopRatedTvSeriesEmpty) {
-              return const Center(
-                key: Key('error_message'),
-                child: Text('Empty'),
-              );
             } else {
               return const Center(
-                child: Text('Error Get Top Rated TV Series'),
+                child: Text('Empty data'),
               );
             }
           },

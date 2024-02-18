@@ -33,22 +33,19 @@ class _NowPlayingTvSeriesPageState extends State<NowPlayingTvSeriesPage> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<NowPlayingTvSeriesBloc, NowPlayingTvSeriesState>(
-          builder: (context, state) {
+          builder: (_, state) {
             if (state is NowPlayingTvSeriesLoading) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
             } else if (state is NowPlayingTvSeriesHasData) {
-              final result = state.result;
-              return Expanded(
-                child: ListView.builder(
-                  padding: const EdgeInsets.all(8),
-                  itemBuilder: (context, index) {
-                    final tvSeries = result[index];
-                    return TvSeriesCard(tvSeries);
-                  },
-                  itemCount: result.length,
-                ),
+              return ListView.builder(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                itemBuilder: (_, index) {
+                  final tvSeries = state.result[index];
+                  return TvSeriesCard(tvSeries);
+                },
+                itemCount: state.result.length,
               );
             } else if (state is NowPlayingTvSeriesError) {
               return Center(
@@ -57,7 +54,7 @@ class _NowPlayingTvSeriesPageState extends State<NowPlayingTvSeriesPage> {
               );
             } else {
               return const Center(
-                child: Text('Error Get Now Playing TV Series'),
+                child: Text('Empty data'),
               );
             }
           },
