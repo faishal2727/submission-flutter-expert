@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "496335022424",
+    "project_id": "film-ku-33f66",
+    "storage_bucket": "film-ku-33f66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496335022424:android:7bf8e2aa232bff6a0bdd2d",
+        "android_client_info": {
+          "package_name": "com.example.submissi_flutter_expert"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQTUWA1SpAQOr-XPkEgIFCUQJB9zalkv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

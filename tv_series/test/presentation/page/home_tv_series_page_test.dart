@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:tv_series/presentation/bloc/now_playing_tv_series/now_playing_tv_series_bloc.dart';
+import 'package:tv_series/presentation/bloc/popular_tv_series/popular_tv_series_bloc.dart';
+import 'package:tv_series/presentation/bloc/top_rated_tv_series/top_rated_tv_series_bloc.dart';
+import 'package:tv_series/presentation/pages/tv_series_list_page.dart';
 import 'package:tv_series/tv_series.dart';
 
 import '../../dummy_data/dummy_object.dart';
@@ -96,13 +100,11 @@ void main() {
   });
 
   testWidgets('Page should display empty text when empty', (tester) async {
-    when(() => fakeTVSeriesListBloc.state)
-        .thenReturn(NowPlayingTvSeriesEmpty());
-    when(() => fakeTVSeriesPopularBloc.state)
-        .thenReturn(PopularTvSeriesEmpty());
+     when(() => fakeTVSeriesListBloc.state).thenReturn(NowPlayingTvSeriesEmpty());
+    when(() => fakeTVSeriesPopularBloc.state).thenReturn(PopularTvSeriesEmpty());
     when(() => fakeTVSeriesTopBloc.state).thenReturn(TopRatedTvSeriesEmpty());
 
-    await tester.pumpWidget(_createTestableWidget(const TvSeriesListPage()));
+    await tester.pumpWidget(_createTestableWidget( TvSeriesListPage()));
 
     expect(find.byKey(const Key('empty_message')), findsNWidgets(3));
   });

@@ -37,21 +37,21 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
     return Padding(
       padding: const EdgeInsets.only(top: 16, left: 8, right: 8, bottom: 8),
       child: BlocBuilder<WatchlistTvSeriesBloc, WatchlistTvSeriesState>(
-        builder: (context, state) {
-          if (state is WatchlistTvSeriesLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (state is WatchlistTvSeriesHasData) {
-            return ListView.builder(
-              itemBuilder: (context, index) {
-                final movie = state.result[index];
-                return TvSeriesCard(movie);
-              },
-              itemCount: state.result.length,
-            );
-          } else if (state is WatchlistTvSeriesEmpty) {
-            return Center(
+          builder: (context, state) {
+            if (state is WatchlistTvSeriesLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is WatchlistTvSeriesHasData) {
+              return ListView.builder(
+                itemBuilder: (context, index) {
+                  final tvSeries = state.result[index];
+                  return TvSeriesCard(tvSeries);
+                },
+                itemCount: state.result.length,
+              );
+            } else if (state is WatchlistTvSeriesEmpty) {
+              return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -61,14 +61,14 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
                   ],
                 ),
               );
-          } else {
-            return const Center(
-              key: Key('error_message'),
-              child: Text('error'),
-            );
-          }
-        },
-      ),
+            } else {
+              return const Center(
+                key: Key('error_message'),
+                child: Text('error'),
+              );
+            }
+          },
+        ),
     );
   }
 

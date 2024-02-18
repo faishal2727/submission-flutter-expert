@@ -77,7 +77,7 @@ class _TvSeriesListPageState extends State<TvSeriesListPage> {
                       child: Text(state.message),
                     );
                   } else if (state is NowPlayingTvSeriesEmpty) {
-                     return const Center(
+                    return const Center(
                       child: Text(
                         'empty',
                         key: Key('empty_message'),
@@ -85,7 +85,7 @@ class _TvSeriesListPageState extends State<TvSeriesListPage> {
                     );
                   } else {
                     return const Center(
-                      child: Text('Error Get Now Playing TV Series'),
+                      child: Text('Error Get Top Rated TV Series'),
                     );
                   }
                 },
@@ -97,7 +97,6 @@ class _TvSeriesListPageState extends State<TvSeriesListPage> {
                 },
               ),
               BlocBuilder<PopularTvSeriesBloc, PopularTvSeriesState>(
-                key: const Key('popular tvseries'),
                 builder: (context, state) {
                   if (state is PopularTvSeriesLoading) {
                     return const Center(
@@ -105,16 +104,12 @@ class _TvSeriesListPageState extends State<TvSeriesListPage> {
                     );
                   } else if (state is PopularTvSeriesHasData) {
                     final result = state.result;
+
                     return TvSeriesList(result);
                   } else if (state is PopularTvSeriesError) {
                     return Center(
                       key: const Key('error_message'),
                       child: Text(state.message),
-                    );
-                  } else if (state is PopularTvSeriesEmpty) {
-                    return const Center(
-                      key: Key('error_message'),
-                      child: Text('Empty'),
                     );
                   } else if (state is PopularTvSeriesEmpty) {
                     return const Center(
@@ -137,7 +132,6 @@ class _TvSeriesListPageState extends State<TvSeriesListPage> {
                 },
               ),
               BlocBuilder<TopRatedTvSeriesBloc, TopRatedTvSeriesState>(
-                key: const Key('top rated tvseries'),
                 builder: (context, state) {
                   if (state is TopRatedTvSeriesLoading) {
                     return const Center(
@@ -150,11 +144,6 @@ class _TvSeriesListPageState extends State<TvSeriesListPage> {
                     return Center(
                       key: const Key('error_message'),
                       child: Text(state.message),
-                    );
-                  } else if (state is TopRatedTvSeriesEmpty) {
-                    return const Center(
-                      key: Key('error_message'),
-                      child: Text('Empty'),
                     );
                   } else if (state is TopRatedTvSeriesEmpty) {
                     return const Center(

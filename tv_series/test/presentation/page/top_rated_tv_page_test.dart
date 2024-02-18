@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -33,8 +32,7 @@ void main() {
     final progressBarFinder = find.byType(CircularProgressIndicator);
     final centerFinder = find.byType(Center);
 
-    await tester
-        .pumpWidget(createTestableWidget( TopRatedTvSeriesPage()));
+    await tester.pumpWidget(createTestableWidget(const TopRatedTvSeriesPage()));
 
     expect(centerFinder, findsOneWidget);
     expect(progressBarFinder, findsOneWidget);
@@ -42,21 +40,7 @@ void main() {
 
   testWidgets('Page should display ListView when data is loaded',
       (WidgetTester tester) async {
-    when(() => fakeBloc.state)
-        .thenReturn(TopRatedTvSeriesHasData(testTvSeriesList));
-
-    final listViewFinder = find.byType(ListView);
-
-    await tester
-        .pumpWidget(createTestableWidget(const TopRatedTvSeriesPage()));
-
-    expect(listViewFinder, findsOneWidget);
-  });
-
-    testWidgets('Page should display ListView when data is loaded',
-      (WidgetTester tester) async {
-    when(() => fakeBloc.state)
-        .thenReturn( TopRatedTvSeriesHasData([tTvSeries]));
+    when(() => fakeBloc.state).thenReturn(TopRatedTvSeriesHasData([tTvSeries]));
 
     final listViewFinder = find.byType(ListView);
 
@@ -65,11 +49,10 @@ void main() {
     expect(listViewFinder, findsOneWidget);
   });
 
-
   testWidgets('Page should display text with message when Error',
       (WidgetTester tester) async {
     when(() => fakeBloc.state)
-        .thenReturn( TopRatedTvSeriesError('error_message'));
+        .thenReturn(TopRatedTvSeriesError('error_message'));
 
     final textFinder = find.byKey(const Key('error_message'));
 
