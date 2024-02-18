@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="film_ku_submissi_expert"
+        android:label="submissi_flutter_expert"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

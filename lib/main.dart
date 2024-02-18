@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:about/about_page.dart';
 import 'package:core/core.dart';
 import 'package:core/utils/routes.dart';
@@ -14,7 +16,7 @@ import 'package:tv_series/tv_series.dart';
 import 'package:watchlist/watchlist.dart';
 
 void main() async {
-   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -33,22 +35,25 @@ class MyApp extends StatelessWidget {
 
         //package: movie
         BlocProvider(create: (_) => di.locator<NowPlayingMovieBloc>()),
-        BlocProvider<PopularMovieBloc>(create: (_) => di.locator<PopularMovieBloc>()),
-        BlocProvider<TopRatedMovieBloc>(create: (_) => di.locator<TopRatedMovieBloc>()),
+        BlocProvider<PopularMovieBloc>(
+            create: (_) => di.locator<PopularMovieBloc>()),
+        BlocProvider<TopRatedMovieBloc>(
+            create: (_) => di.locator<TopRatedMovieBloc>()),
         BlocProvider(create: (_) => di.locator<DetailMovieBloc>()),
         BlocProvider(create: (_) => di.locator<RecomendationMovieBloc>()),
 
         //package: tv-series
         BlocProvider(create: (_) => di.locator<NowPlayingTvSeriesBloc>()),
-        BlocProvider<PopularTvSeriesBloc>(create: (_) => di.locator<PopularTvSeriesBloc>()),
-        BlocProvider<TopRatedTvSeriesBloc>(create: (_) => di.locator<TopRatedTvSeriesBloc>()),
+        BlocProvider<PopularTvSeriesBloc>(
+            create: (_) => di.locator<PopularTvSeriesBloc>()),
+        BlocProvider<TopRatedTvSeriesBloc>(
+            create: (_) => di.locator<TopRatedTvSeriesBloc>()),
         BlocProvider(create: (_) => di.locator<DetailTvSeriesBloc>()),
         BlocProvider(create: (_) => di.locator<RecomendationTvSeriesBloc>()),
 
         //packege: watclist
         BlocProvider(create: (_) => di.locator<WatchlistMovieBloc>()),
         BlocProvider(create: (_) => di.locator<WatchlistTvSeriesBloc>()),
-
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -65,9 +70,11 @@ class MyApp extends StatelessWidget {
             case '/home':
               return MaterialPageRoute(builder: (_) => HomeMoviePage());
             case PopularMoviesPage.ROUTE_NAME:
-              return CupertinoPageRoute(builder: (_) => PopularMoviesPage());
+              return CupertinoPageRoute(
+                  builder: (_) => const PopularMoviesPage());
             case TopRatedMoviesPage.ROUTE_NAME:
-              return CupertinoPageRoute(builder: (_) => TopRatedMoviesPage());
+              return CupertinoPageRoute(
+                  builder: (_) => const TopRatedMoviesPage());
             case MOVIE_DETAIL_ROUTES:
               final id = settings.arguments as int;
               return MaterialPageRoute(
@@ -88,21 +95,25 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => WatchlistPage());
             case NowPlayingTvSeriesPage.ROUTE_NAME:
               return MaterialPageRoute(
-                  builder: (_) => NowPlayingTvSeriesPage());
+                  builder: (_) => const NowPlayingTvSeriesPage());
             case TvSeriesListPage.ROUTE_NAME:
-              return CupertinoPageRoute(builder: (_) => TvSeriesListPage());
+              return CupertinoPageRoute(
+                  builder: (_) => const TvSeriesListPage());
             case PopularTvSeriesPage.ROUTE_NAME:
-              return CupertinoPageRoute(builder: (_) => PopularTvSeriesPage());
+              return CupertinoPageRoute(
+                  builder: (_) => const PopularTvSeriesPage());
             case TopRatedTvSeriesPage.ROUTE_NAME:
-              return CupertinoPageRoute(builder: (_) => TopRatedTvSeriesPage());
+              return CupertinoPageRoute(
+                  builder: (_) => const TopRatedTvSeriesPage());
             case SEARCH_TV_SERIES_ROUTE:
-              return CupertinoPageRoute(builder: (_) => SearchTvSeriesPage());
+              return CupertinoPageRoute(
+                  builder: (_) => const SearchTvSeriesPage());
             case AboutPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => AboutPage());
             default:
               return MaterialPageRoute(
                 builder: (_) {
-                  return Scaffold(
+                  return const Scaffold(
                     body: Center(
                       child: Text('Page not found :('),
                     ),
