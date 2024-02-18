@@ -29,14 +29,15 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
   }
 
   void didPopNext() {
-     context.read<WatchlistTvSeriesBloc>().add(OnGethWatchlistTvSeries());
+    context.read<WatchlistTvSeriesBloc>().add(OnGethWatchlistTvSeries());
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 16, left: 8, right: 8, bottom: 8),
-      child: BlocBuilder<WatchlistTvSeriesBloc, WatchlistTvSeriesState>(
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.only(top: 16, left: 8, right: 8, bottom: 8),
+        child: BlocBuilder<WatchlistTvSeriesBloc, WatchlistTvSeriesState>(
           builder: (context, state) {
             if (state is WatchlistTvSeriesLoading) {
               return const Center(
@@ -69,6 +70,7 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
             }
           },
         ),
+      ),
     );
   }
 

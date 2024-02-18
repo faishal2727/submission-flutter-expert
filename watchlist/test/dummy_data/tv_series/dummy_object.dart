@@ -1,5 +1,3 @@
-
-
 import 'package:core/data/models/genre_model.dart';
 import 'package:core/data/models/season_model.dart';
 import 'package:core/data/models/tv_series_detail_model.dart';
@@ -43,6 +41,9 @@ final tTvSeries = TvSeries(
   name: 'Hazbin Hotel',
   originalName: 'Hazbin Hotel',
 );
+
+
+final testTvSeriesList = [tTvSeries];
 
 final tTvSeriesResponse = TvSeriesDetailResponse(
   backdropPath: 'backdropPath',

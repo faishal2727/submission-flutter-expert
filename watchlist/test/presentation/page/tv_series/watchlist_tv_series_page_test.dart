@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:watchlist/presentation/bloc/tv_series/watchlist_tv_series_bloc.dart';
-import 'package:watchlist/presentation/pages/tv_series/watchlist_tv_series_page.dart';
 import 'package:watchlist/watchlist.dart';
 
 import '../../../dummy_data/tv_series/dummy_object.dart';
@@ -55,10 +53,10 @@ void main() {
     expect(progressBarFinder, findsOneWidget);
   });
 
-  testWidgets('Page should display ListView when data is loaded',
+    testWidgets('Page should display ListView when data is loaded',
       (WidgetTester tester) async {
-   when(() => mockWatchlistTvSeriesBloc.state)
-        .thenReturn(WatchlistTvSeriesHasData([tTvSeries]));
+    when(() => mockWatchlistTvSeriesBloc.state)
+        .thenReturn(WatchlistTvSeriesHasData(testTvSeriesList));
 
     final listViewFinder = find.byType(ListView);
 
