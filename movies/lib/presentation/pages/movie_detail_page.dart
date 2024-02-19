@@ -1,6 +1,4 @@
-// ignore_for_file: constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, library_private_types_in_public_api, must_be_immutable, prefer_interpolation_to_compose_strings, unused_local_variable
-
-import 'dart:ui';
+// ignore_for_file: constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, library_private_types_in_public_api, must_be_immutable, prefer_interpolation_to_compose_strings
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
@@ -88,45 +86,17 @@ class _DetailContentState extends State<DetailContent> {
     final screenWidth = MediaQuery.of(context).size.width;
     return Stack(
       children: [
-        Stack(
-          children: [
-            Stack(
-              children: [
-                Image.network(
-                  "$BASE_IMAGE_URL${widget.movie.posterPath}",
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  fit: BoxFit.cover,
-                ),
-                Container(
-                  color:
-                      const Color.fromARGB(255, 111, 111, 111).withOpacity(0.3),
-                ),
-                BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                  child: Container(
-                    color: const Color.fromARGB(13, 51, 51, 51),
-                  ),
-                ),
-              ],
+        Stack(children: [
+          CachedNetworkImage(
+            imageUrl:
+                'https://image.tmdb.org/t/p/w500${widget.movie.posterPath}',
+            width: screenWidth,
+            placeholder: (context, url) => const Center(
+              child: CircularProgressIndicator(),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 48),
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(24),
-                  child: Image.network(
-                    "$BASE_IMAGE_URL${widget.movie.posterPath}",
-                    width: 250,
-                    height: 350,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          ),
+        ]),
         Container(
           margin: const EdgeInsets.only(top: 48 + 8),
           child: DraggableScrollableSheet(
