@@ -41,6 +41,7 @@ dependencies:
   path_provider: ^2.0.2
   firebase_core: ^2.25.4
   firebase_crashlytics: ^3.4.14
+  flutter_launcher_icons: ^0.13.1
 
   about:
     path: about
@@ -69,23 +70,17 @@ dev_dependencies:
   mocktail: ^1.0.1
   mockito: ^5.0.8
 
-
-
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
     - certificates/
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/filmku.png"
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

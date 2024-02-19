@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
-import 'package:core/domain/entities/movie.dart';
 import 'package:core/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,10 +37,10 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
           children: [
             const UserAccountsDrawerHeader(
               currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage('assets/circle-g.png'),
+                backgroundImage: AssetImage('assets/filmku.png',),
               ),
-              accountName: Text('Ditonton'),
-              accountEmail: Text('ditonton@dicoding.com'),
+              accountName: Text('Film-Ku'),
+              accountEmail: Text('muhammadfaishalrizal27@gmail.com'),
             ),
             ListTile(
               leading: const Icon(Icons.movie),
@@ -75,7 +74,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
         ),
       ),
       appBar: AppBar(
-        title: const Text('Ditonton'),
+        title: const Text('Film-Ku'),
         actions: [
           IconButton(
             onPressed: () {
@@ -91,6 +90,15 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text(
+                'Hello Everyone',
+                style: kHeading5.copyWith(color: kRed),
+              ),
+              Text(
+                'Selamat Menonoton',
+                style: kBodyText,
+              ),
+              const SizedBox(height: 16),
               Text(
                 'Now Playing',
                 style: kHeading6,

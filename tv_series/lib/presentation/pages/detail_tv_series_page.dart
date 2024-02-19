@@ -1,5 +1,7 @@
 // ignore_for_file: constant_identifier_names, use_build_context_synchronously, prefer_interpolation_to_compose_strings, must_be_immutable, use_key_in_widget_constructors, prefer_const_constructors_in_immutables
 
+import 'dart:ui';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
 import 'package:core/domain/entities/genre.dart';
@@ -92,14 +94,44 @@ class _DetailContentState extends State<DetailContent> {
     final screenWidth = MediaQuery.of(context).size.width;
     return Stack(
       children: [
-        CachedNetworkImage(
-          imageUrl:
-              'https://image.tmdb.org/t/p/w500${widget.tvSeries.posterPath}',
-          width: screenWidth,
-          placeholder: (context, url) => const Center(
-            child: CircularProgressIndicator(),
-          ),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
+        Stack(
+          children: [
+            Stack(
+              children: [
+                Image.network(
+                  "$BASE_IMAGE_URL${widget.tvSeries.posterPath}",
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  fit: BoxFit.cover,
+                ),
+                Container(
+                  color:
+                      const Color.fromARGB(255, 111, 111, 111).withOpacity(0.3),
+                ),
+                BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                  child: Container(
+                    color: const Color.fromARGB(13, 51, 51, 51),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 48),
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(24),
+                  child: Image.network(
+                    "$BASE_IMAGE_URL${widget.tvSeries.posterPath}",
+                    width: 250,
+                    height: 350,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
         Container(
           margin: const EdgeInsets.only(top: 48 + 8),

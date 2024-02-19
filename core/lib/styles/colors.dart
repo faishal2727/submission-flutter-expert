@@ -7,9 +7,10 @@ const Color kPrussianBlue = Color(0xFF003566);
 const Color kMikadoYellow = Color(0xFFffc300);
 const Color kDavysGrey = Color(0xFF4B5358);
 const Color kGrey = Color(0xFF303030);
+const Color kRed = Color(0xFFF00000);
 
 const kColorScheme = ColorScheme(
-  primary: kMikadoYellow,
+  primary: kRed,
   primaryContainer: kMikadoYellow,
   secondary: kPrussianBlue,
   secondaryContainer: kPrussianBlue,
