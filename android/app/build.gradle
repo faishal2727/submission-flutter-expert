@@ -115,7 +115,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace "com.example.submissi_flutter_expert"
+    namespace "com.film_si_adung"
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -134,7 +134,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.submissi_flutter_expert"
+        applicationId "com.submissi_flutter_expert"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion flutter.minSdkVersion
@@ -144,20 +144,20 @@ android {
         versionName flutterVersionName
     }
 
-    signingConfigs {
-       release {
-            storeFile file('android/app/keystore.jks') // Sesuaikan dengan path ke file keystore Anda
-            storePassword 'mymovie'
-            keyAlias 'mymovie'
-            keyPassword 'mymovie'
-        }
-    }
+    // signingConfigs {
+    //    release {
+    //         storeFile file('/Users/apple/Documents/Development/flutter_project/dicoding/flutter-expert/submissi-expert-2/android/app/keystore.jks') // Sesuaikan dengan path ke file keystore Anda
+    //         storePassword 'mymovie'
+    //         keyAlias 'mymovie'
+    //         keyPassword 'mymovie'
+    //     }
+    // }
 
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
 
         }
     }
