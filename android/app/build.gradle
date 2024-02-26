@@ -146,7 +146,7 @@ android {
 
     signingConfigs {
        release {
-            storeFile file('/Users/apple/Documents/Development/flutter_project/dicoding/flutter-expert/submissi-expert-2/keystore.jks') // Sesuaikan dengan path ke file keystore Anda
+            storeFile file('android/app/keystore.jks') // Sesuaikan dengan path ke file keystore Anda
             storePassword 'mymovie'
             keyAlias 'mymovie'
             keyPassword 'mymovie'
