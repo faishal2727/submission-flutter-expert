@@ -1,1 +1,1 @@
-genhtml coverage/lcov.info -o coverage --no-function-coverage -s -p /Users/apple/Documents/Development/flutter_project/dicoding/flutter_expert/submissi-expert-2/coverage
+genhtml coverage/lcov.info -o coverage --no-function-coverage -s -p /Users/apple/Documents/Development/flutter_project/dicoding/flutter-expert/submissi-expert-2/coverage
